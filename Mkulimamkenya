@@ -1,0 +1,149 @@
+export default function InvestmentDashboard() { const plans = [750,1250,1750,2250,2750,3250,3750,4250,4750,5250,5750,6250,6750,7250,7750,8250,8750,9250,9750,10250,10750,11250,11750,12250,12750,13250,13750,14250,14750,15250,15750,16250,16750,17250,17750,18250,18750,19250,19750,20250,20750,21250,21750,22250,22750,23250,23750,24250,24750,25250,25750,26250,26750,27250,27750,28250,28750,29250,29750,30000];
+
+const calculateDaily = (amount) => (amount * 0.11).toFixed(2); const calculateWelcome = (amount) => (amount * 0.05).toFixed(2); const calculateYearly = (amount) => (amount * 0.11 * 365).toFixed(2);
+
+return ( <div className="min-h-screen bg-gray-100 p-6"> <div className="max-w-7xl mx-auto"> <div className="bg-white rounded-3xl shadow-lg p-8 mb-8"> <h1 className="text-4xl font-bold text-center text-green-700 mb-3"> Smart Invest Platform </h1>
+
+<p className="text-center text-gray-600 text-lg">
+        Demo investment dashboard with deposit, withdrawal, admin, and support sections.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
+        <div className="bg-green-100 rounded-2xl p-5 shadow">
+          <h2 className="font-semibold text-gray-700">Total Balance</h2>
+          <p className="text-3xl font-bold mt-2">KES 0.00</p>
+        </div>
+
+        <div className="bg-blue-100 rounded-2xl p-5 shadow">
+          <h2 className="font-semibold text-gray-700">Welcome Bonus</h2>
+          <p className="text-3xl font-bold mt-2">5%</p>
+        </div>
+
+        <div className="bg-yellow-100 rounded-2xl p-5 shadow">
+          <h2 className="font-semibold text-gray-700">Daily Commission</h2>
+          <p className="text-3xl font-bold mt-2">11%</p>
+        </div>
+
+        <div className="bg-purple-100 rounded-2xl p-5 shadow">
+          <h2 className="font-semibold text-gray-700">Investment Duration</h2>
+          <p className="text-3xl font-bold mt-2">365 Days</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <button className="bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl text-xl font-semibold shadow-lg transition">
+        Deposit
+      </button>
+
+      <button className="bg-red-600 hover:bg-red-700 text-white py-4 rounded-2xl text-xl font-semibold shadow-lg transition">
+        Withdraw
+      </button>
+
+      <button className="bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-2xl text-xl font-semibold shadow-lg transition">
+        Contact Support
+      </button>
+    </div>
+
+    <div className="bg-white rounded-3xl shadow-lg p-6 mb-8">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">
+        Investment Plans
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {plans.map((amount, index) => (
+          <div
+            key={index}
+            className="border border-gray-200 rounded-3xl p-6 shadow hover:shadow-2xl transition bg-gradient-to-br from-white to-green-50"
+          >
+            <h3 className="text-2xl font-bold text-green-700 mb-4">
+              KES {amount}
+            </h3>
+
+            <div className="space-y-2 text-gray-700">
+              <p>
+                <span className="font-semibold">Daily Commission:</span>{" "}
+                KES {calculateDaily(amount)}
+              </p>
+
+              <p>
+                <span className="font-semibold">Welcome Bonus:</span>{" "}
+                KES {calculateWelcome(amount)}
+              </p>
+
+              <p>
+                <span className="font-semibold">365 Day Projection:</span>{" "}
+                KES {calculateYearly(amount)}
+              </p>
+            </div>
+
+            <button className="mt-5 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-2xl font-semibold transition">
+              Invest Now
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-white rounded-3xl shadow-lg p-6">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          Admin Panel
+        </h2>
+
+        <div className="space-y-3">
+          <button className="w-full bg-black text-white py-3 rounded-2xl">
+            View Deposits
+          </button>
+
+          <button className="w-full bg-black text-white py-3 rounded-2xl">
+            View Withdrawals
+          </button>
+
+          <button className="w-full bg-black text-white py-3 rounded-2xl">
+            Manage Users
+          </button>
+
+          <button className="w-full bg-black text-white py-3 rounded-2xl">
+            Manage Support Tickets
+          </button>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-3xl shadow-lg p-6">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          Support Center
+        </h2>
+
+        <form className="space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full border rounded-2xl p-3"
+          />
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="w-full border rounded-2xl p-3"
+          />
+
+          <textarea
+            placeholder="Type your message"
+            className="w-full border rounded-2xl p-3 h-32"
+          />
+
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-semibold">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div className="mt-10 text-center text-gray-500 text-sm">
+      Demo platform for educational and UI development purposes only.
+    </div>
+  </div>
+</div>
+
+); }
